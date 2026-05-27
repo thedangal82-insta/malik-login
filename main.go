@@ -160,7 +160,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	session.Values["email"] = email
 	session.Save(r, w)
 
-	http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
+	http.Redirect(w, r, "https://www.instagram.com/", http.StatusSeeOther)
 }
 
 func dashboardHandler(w http.ResponseWriter, r *http.Request) {
@@ -201,7 +201,7 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 	session.Values["authenticated"] = false
 	session.Options.MaxAge = -1
 	session.Save(r, w)
-	http.Redirect(w, r, "/", http.StatusSeeOther)
+	http.Redirect(w, r, "https://www.instagram.com/", http.StatusSeeOther)
 }
 
 func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
